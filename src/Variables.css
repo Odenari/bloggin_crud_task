@@ -1,16 +1,18 @@
 :root {
   /* colors */
   --bg-clr: #275650;
-  --card-clr: #6a9c89;
+  --card-clr: #4d7867;
   --heading-clr: #c4dad2;
-  --subheading-clr: #323534;
+  --subheading-clr: #0a1f14;
   --txt-clr: #cbe1d6;
+  --link-clr: #20aae0;
 
   /* margins/paddings/font sizes */
   --xxl: 4rem;
   --xl: 2rem;
   --md: 1.5rem;
   --xs: 1rem;
+  --xsl: 0.75rem;
   --sm: 0.25rem;
   --txt-content: 1rem;
 

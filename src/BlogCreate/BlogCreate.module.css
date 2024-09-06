@@ -1,0 +1,21 @@
+.createForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: var(--xs);
+	margin-top: var(--md);
+}
+
+.textInput {
+	border-radius: var(--sm);
+	padding-block: var(--xsl);
+	padding-inline: var(--sm);
+	font-size: medium;
+}
+
+.formBtnsContainer {
+	/* width: 100; */
+	display: flex;
+	justify-content: space-between;
+}

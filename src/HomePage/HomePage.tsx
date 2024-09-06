@@ -1,41 +1,37 @@
 import isEmpty from 'lodash/isEmpty';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Blog } from '../types';
-import { PAGINATION_STEP } from '../App';
 import s from './HomePage.module.css';
+import { Link, useOutletContext } from 'react-router-dom';
 
-type Props = { offsetBy: number };
+export const PAGINATION_STEP = 10;
 
-export const HomePage = ({ offsetBy }: Props) => {
-  const [blogs, setBlogs] = useState<Blog[]>([]);
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts/')
-      .then(response => response.json())
-      .then(json => setBlogs(json));
-  }, []);
+export const HomePage = () => {
+  const { blogs } = useOutletContext() as { blogs: Blog[] };
 
+  // console.log(blogs);
   const [offsetBounds, setOffsetBounds] = useState({
     from: 0,
-    to: offsetBy,
+    to: PAGINATION_STEP,
   });
-
-  useEffect(() => {}, [offsetBounds]);
-  console.log(offsetBounds);
 
   return (
     <>
-      <h2 className={s.subHeading}>
-        Browse through existing blogs or create you own
-      </h2>
+      <header className={s.headerContainer}>
+        <h2 className='subHeading'>Browse through existing blogs</h2>
+        <Link className='link' to='/create'>
+          or create your own
+        </Link>
+      </header>
       {!isEmpty(blogs) ? (
         <main className={s.cardsContainer}>
           {blogs.slice(offsetBounds.from, offsetBounds.to).map(blog => (
-            <a>
-              <section className={s.blogCard} key={blog.id}>
+            <Link to={`/details/?blogId=${blog.id}`} key={blog.id}>
+              <section className={s.blogCard}>
                 <h3 className={s.cardTitle}>{blog.title}</h3>
                 <p className={s.cardContent}>{blog.body}</p>
               </section>
-            </a>
+            </Link>
           ))}
           <div className={s.buttonsContainer}>
             <button
@@ -68,7 +64,7 @@ export const HomePage = ({ offsetBy }: Props) => {
         <div>
           <h2>
             There is no blogs yet. You can create your own{' '}
-            <a>CREATE BLOG TODO</a>
+            <a>CREATE BLOG //TODO </a>
           </h2>
         </div>
       )}

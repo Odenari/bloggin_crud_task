@@ -1,0 +1,44 @@
+.title{
+	text-transform: capitalize;
+	font-size: var(--xl);
+	color: var(--subheading-clr);
+
+}
+
+.body {
+	word-break: keep-all;
+	word-wrap: balance;
+	font-size: var(--md);
+	color: var(--txt-clr);
+}
+
+.body::first-letter{
+	text-transform: capitalize;
+}
+
+.navBtns {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: var(--xs);
+}
+
+.wrapper {
+	/* width: 100%; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.blogContainer{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: start;
+	gap: var(--xl);
+	margin-block: var(--xxl);
+	padding: var(--md);
+	width: 80%;
+	border: 2px solid var(--card-clr);
+	border-radius: var(--sm);
+}

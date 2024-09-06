@@ -7,6 +7,12 @@
   background-color: var(--card-clr);
   border-radius: var(--sm);
   box-shadow: 2px 2px 8px #38405051;
+  transition: transform 100ms ease-in;
+  will-change: transform;
+}
+
+.blogCard:hover  {
+  transform: scale(1.02);
 }
 
 .cardTitle {
@@ -21,11 +27,6 @@
   color: var(--txt-clr);
 }
 
-.subHeading {
-  text-align: center;
-  color: var(--heading-clr);
-}
-
 .cardsContainer {
   display: flex;
   gap: var(--md);
@@ -37,4 +38,17 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--sm);
+  font-size: var(--md);
+}
+
+@media  (width < 861px) {
+  .headerContainer {
+    flex-direction: column;
+  }
 }
