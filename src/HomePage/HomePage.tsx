@@ -1,19 +1,37 @@
 import isEmpty from 'lodash/isEmpty';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Blog } from '../types';
 import s from './HomePage.module.css';
-import { Link, useOutletContext } from 'react-router-dom';
+import {
+  Link,
+  useActionData,
+  useOutletContext,
+  useSubmit,
+} from 'react-router-dom';
+import { ActionResult } from '../service/actions';
 
 export const PAGINATION_STEP = 10;
 
 export const HomePage = () => {
-  const { blogs } = useOutletContext() as { blogs: Blog[] };
-
-  // console.log(blogs);
+  const [{ blogs }, setData] = useState<{ blogs: Blog[] }>(useOutletContext());
+  const actionResult = useActionData() as ActionResult;
+  const submit = useSubmit();
   const [offsetBounds, setOffsetBounds] = useState({
     from: 0,
     to: PAGINATION_STEP,
   });
+
+  useEffect(() => {
+    if (actionResult && actionResult.success) {
+      alert(`Blog post with id ${actionResult.id} was deleted`);
+      setData(prevData => {
+        const filtered = prevData.blogs.filter(
+          blog => blog.id !== Number(actionResult.id)
+        );
+        return { blogs: filtered };
+      });
+    }
+  }, [actionResult]);
 
   return (
     <>
@@ -28,7 +46,20 @@ export const HomePage = () => {
           {blogs.slice(offsetBounds.from, offsetBounds.to).map(blog => (
             <Link to={`/details/?blogId=${blog.id}`} key={blog.id}>
               <section className={s.blogCard}>
-                <h3 className={s.cardTitle}>{blog.title}</h3>
+                <div className={s.titleCardContainer}>
+                  <h3 className={s.cardTitle}>{blog.title}</h3>
+                  <button
+                    className={s.deleteBtn}
+                    onClick={e => {
+                      e.preventDefault();
+                      const fData = new FormData();
+                      fData.append('deleteId', `${blog.id}`);
+                      submit(fData, { method: 'DELETE' });
+                    }}
+                  >
+                    &times;
+                  </button>
+                </div>
                 <p className={s.cardContent}>{blog.body}</p>
               </section>
             </Link>

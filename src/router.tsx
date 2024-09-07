@@ -3,7 +3,7 @@ import App from './App';
 import { getBlogById, getBlogs } from './service/fetching';
 import { BlogDetail } from './BlogDetail';
 import { HomePage } from './HomePage';
-import { createPost } from './service/posting';
+import { createPost, deleteBlog } from './service/actions';
 import { BlogCreate } from './BlogCreate';
 
 const myRouter = createBrowserRouter([
@@ -15,16 +15,26 @@ const myRouter = createBrowserRouter([
       {
         path: 'blogs',
         element: <HomePage />,
+        action: async ({ request }) => {
+          const result = await deleteBlog(request);
+          return result;
+        },
       },
       {
         path: 'create',
         element: <BlogCreate />,
-        action: ({ request }) => createPost(request),
+        action: async ({ request }) => {
+          await createPost(request);
+          return { success: true };
+        },
       },
       {
         path: 'details',
         element: <BlogDetail />,
         loader: ({ request }) => getBlogById(request),
+      },
+      {
+        path: 'update:blogId',
       },
     ],
   },

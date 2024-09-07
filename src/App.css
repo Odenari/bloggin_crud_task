@@ -25,6 +25,7 @@ input {
   outline: none;
   border: none;
 }
+
 button {
   transition: transform 100ms ease-in-out;
 }

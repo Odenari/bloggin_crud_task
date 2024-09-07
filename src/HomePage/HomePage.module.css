@@ -34,10 +34,34 @@
   align-items: center;
 }
 
+.titleCardContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
 .buttonsContainer {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.deleteBtn {
+  position: relative;
+  background-color: transparent;
+  outline: none;
+  border:none;
+  scale: 1.5;
+  z-index: 100;
+  cursor: pointer;
+  padding: calc(var(--sm) * 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.deleteBtn:hover {
+  scale: 2.3;
 }
 
 .headerContainer {

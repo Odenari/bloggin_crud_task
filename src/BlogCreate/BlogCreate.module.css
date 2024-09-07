@@ -8,6 +8,7 @@
 }
 
 .textInput {
+	width: 100%;
 	border-radius: var(--sm);
 	padding-block: var(--xsl);
 	padding-inline: var(--sm);
@@ -15,7 +16,18 @@
 }
 
 .formBtnsContainer {
-	/* width: 100; */
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
+}
+
+.gratulation {
+	font-size: var(--xl);
+	font-weight: 600;
+	color: var(--txt-clr);
+	visibility: hidden;
+}
+
+.gratulation[data-visible=true] {
+	visibility:initial;
 }
