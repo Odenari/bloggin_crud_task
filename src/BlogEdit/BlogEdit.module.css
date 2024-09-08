@@ -1,3 +1,7 @@
+.editPageContainer {
+	height: 100%;
+}
+
 .createForm {
 	display: flex;
 	flex-direction: column;
@@ -9,9 +13,11 @@
 
 .textInput {
 	width: 100%;
+	min-width: fit-content;
+	min-height: fit-content;
 	border-radius: var(--sm);
-	padding-block: var(--xsl);
-	padding-inline: var(--sm);
+	padding-block: var(--md);
+	padding-inline: var(--md);
 	font-size: medium;
 }
 
@@ -21,25 +27,25 @@
 		width: 100%;
 		line-height: 1.5;
 		border-radius: var(--sm);
-		padding-block: var(--xsl);
-		padding-inline: var(--sm);
+		padding-block: var(--md);
+		padding-inline: var(--md);
 }
 
 .formBtnsContainer {
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 }
 
 .gratulation {
 	font-size: var(--xl);
 	font-weight: 600;
 	color: var(--txt-clr);
-	display: none;
 	visibility: hidden;
+	display: none;
 }
 
 .gratulation[data-visible=true] {
-	display: none;
+	display: block;
 	visibility:initial;
 }

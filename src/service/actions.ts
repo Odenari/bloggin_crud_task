@@ -1,7 +1,5 @@
-import { Blog } from '../types';
+import { ActionResult, Blog } from '../types';
 import { BASE_PATH } from './fetching';
-
-export type ActionResult = { success: true; id: string };
 
 export const createPost = async (req: Request): Promise<Blog> => {
   try {
@@ -33,13 +31,31 @@ export const deleteBlog = async (req: Request): Promise<ActionResult> => {
   const deleteId = (await req.formData()).get('deleteId');
   try {
     await fetch(`${BASE_PATH}/posts/${deleteId}`, {
-      method: req.method,
+      method: 'POST',
     });
     return { success: true, id: `${deleteId}` };
   } catch (err) {
     throw {
       err,
       message: 'Post deletion failed',
+    };
+  }
+};
+
+export const updatePostById = async (req: Request): Promise<ActionResult> => {
+  const fData = await req.formData();
+  const post = Object.fromEntries(fData.entries());
+
+  try {
+    await fetch(`${BASE_PATH}/posts/${post.id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(post),
+    });
+    return { success: true, id: `${post.id}` };
+  } catch (err) {
+    throw {
+      err,
+      message: 'Post update failed',
     };
   }
 };

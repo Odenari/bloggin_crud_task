@@ -2,7 +2,6 @@
 	text-transform: capitalize;
 	font-size: var(--xl);
 	color: var(--subheading-clr);
-
 }
 
 .body {
@@ -24,13 +23,20 @@
 }
 
 .wrapper {
-	/* width: 100%; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
+.titleCardContainer {
+	width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
 .blogContainer{
+	background-color: var(--card-clr);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -39,6 +45,35 @@
 	margin-block: var(--xxl);
 	padding: var(--md);
 	width: 80%;
-	border: 2px solid var(--card-clr);
 	border-radius: var(--sm);
+}
+
+.btnsContainer {
+	width: fit-content;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: var(--xs)
+}
+
+.deleteBtn {
+	color: var(--txt-clr);
+  position: relative;
+  background-color: transparent;
+  outline: none;
+  border:none;
+  scale: 2;
+  z-index: 100;
+  cursor: pointer;
+  padding: calc(var(--sm) / 2);
+}
+
+.deleteBtn:hover {
+  scale: 2.5;
+}
+
+
+.editIcon:hover {
+	scale: 1.5;
 }

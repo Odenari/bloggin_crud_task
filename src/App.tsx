@@ -1,22 +1,17 @@
-import { useEffect } from 'react';
 import './App.css';
 import './Variables.css';
 import { Blog } from './types';
-import { Outlet, useLoaderData, useNavigate } from 'react-router-dom';
+import { Outlet, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export function App() {
   const blogs = useLoaderData() as Blog[];
-  const nav = useNavigate();
-
-  useEffect(() => {
-    if (blogs) {
-      nav('blogs');
-    }
-  }, []);
 
   return (
     <>
-      <h1 className='mainTitle'>The reading</h1>
+      <Link to='/blogs'>
+        <h1 className='mainTitle'>The reading</h1>
+      </Link>
       <hr />
       <div className='mainWrapper'>
         <Outlet

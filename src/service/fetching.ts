@@ -8,17 +8,16 @@ export const getBlogs = async (): Promise<Blog[]> => {
     return response.json();
   } catch (err) {
     console.error(err);
-    throw { err };
+    throw { err, message: 'Failed to get all blogs' };
   }
 };
 
-export const getBlogById = async (req: Request): Promise<Blog> => {
-  const blogId = new URL(req.url).searchParams.get('blogId');
+export const getBlogById = async (blogId: string): Promise<Blog> => {
   try {
     const response = await fetch(`${BASE_PATH}/posts/${blogId}`);
     return response.json();
   } catch (err) {
     console.error(err);
-    throw { err };
+    throw { err, message: 'Failed to get blog by ID' };
   }
 };

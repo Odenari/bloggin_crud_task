@@ -38,30 +38,44 @@
   display: flex;
   justify-content: space-between;
   align-items: start;
+  margin-bottom: var(--xs);
 }
 
-.buttonsContainer {
+.paginationBtnsContainer {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
+.btnsContainer {
+  display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+  gap: var(--xs);
+}
+
+
 .deleteBtn {
+	color: var(--txt-clr);
   position: relative;
   background-color: transparent;
   outline: none;
   border:none;
-  scale: 1.5;
+  scale: 2;
   z-index: 100;
   cursor: pointer;
-  padding: calc(var(--sm) * 2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: calc(var(--sm) / 2);
 }
 
 .deleteBtn:hover {
-  scale: 2.3;
+  scale: 2.5;
+}
+
+
+.editIcon:hover {
+	scale: 1.5;
 }
 
 .headerContainer {
@@ -69,6 +83,14 @@
   align-items: center;
   gap: var(--sm);
   font-size: var(--md);
+}
+
+.fallBackContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--md);
+  padding-block: var(--md);
 }
 
 @media  (width < 861px) {
